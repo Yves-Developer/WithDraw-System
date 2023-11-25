@@ -1,0 +1,214 @@
+/* DON'T TOUCH THIS LINE IF YOU CARE MY HARDWORKING
+====================================================
+Developer: Yves Mugisha
+Date: 16/11/2023
+Day: Thursday
+Mater Dei
+E-mail: info@integratedfolks.com
+=================================================== */
+
+/* General Css */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color: #081b29;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+}
+/* Navigation bar css */
+.navbar{
+    position: fixed;
+    background: #fff;
+    width: 100%;
+    height: 60px;
+    z-index: 1;
+    display: flex;
+    box-shadow: 6px 3px 5px #cccce5f5;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #081b29;
+    margin-left: 20px;
+}
+nav a{
+    margin-right: 20px;
+    transition: .4s;
+    position: relative;
+    color: #081b29;
+    font-size: 18px;
+}
+nav a:hover{
+    color: #0050e7;
+}
+nav a::before{
+    position: absolute;
+    content: '';
+    width: 0;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding-bottom: 3px;
+    transition: .4s;
+    border-bottom: 1.2px solid #0050e7;
+}
+nav a:hover::before{
+    width: 100%;
+}
+/* Navigation bar css */
+.home{
+    padding-top: 60px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+h1,h2{
+    color:#081b29;
+}
+.col0{
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.col0::before{
+    position: absolute;
+    content: '';
+    width: 100px;
+    height: 100px;
+    background: #0050e7;
+    top: 0;
+    left: 0;
+    clip-path: polygon(0 0, 0 100%, 100% 0);
+}
+.col0 h1{
+    color: #081b29;
+}
+.col0 p{
+    color: #081b29;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 15px;
+    width: 400px;
+    display: block;
+}
+.menu{
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: #081b29;
+    display: none;
+}
+.menu:hover{
+    color: #0050e7;
+}
+.col1{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.col1 img{
+    width: 100%;
+    height: 100%;
+}
+.col1 .slide-n{
+    display: none;
+}
+.fade{
+    animation: fades 3s ease;
+}
+@keyframes fades{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }  
+}
+.btn0{
+    display: inline-flex;
+    color: #fff;
+    background: #0050e7;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+}
+.btn0:hover{
+    box-shadow: 1px 0 10px #0050e7;
+}
+/* Responsiveness for Home page */
+@media screen and (max-width: 750px){
+    .home{
+        grid-template-columns: 100%;
+    }
+    .col1{
+        display: none;
+    }
+    .col0{
+        background: url('../Assets/Images/Graph0.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+    }
+    .col0::before{
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100px;
+        background: #0050e7;
+        clip-path: polygon(0 0, 100% 0%, 100% 0, 0 20%);
+        
+
+    }
+}
+/* Navigation bar for smmall devices less than 450 px in width */
+@media screen and (max-width: 450px){
+    nav{
+        display: none;
+    }
+    .menu{
+        display: block;
+    }
+    .logo.active{
+        display: none;
+    }
+    .navbar.active{
+        height: 100%;
+        flex-direction: column;
+    }
+    .navbar.active.fades{
+        animation: drop 3s ease;
+    }
+    @keyframes drop {
+        0%{
+            height: 60px;
+        }
+      100%{
+        height: 100%;
+      }
+    }
+    nav.active{
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+/* Responsiveness for Home page */

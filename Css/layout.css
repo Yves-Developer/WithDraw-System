@@ -1,0 +1,114 @@
+/* DON'T TOUCH THIS LINES IF YOU CARE MY HARDWORKING
+====================================================
+Developer: Yves Mugisha
+Date: 16/11/2023
+Day: Thursday
+Mater Dei
+E-mail: info@integratedfolks.com
+=================================================== */
+
+
+/* General Css */
+*{
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color: #081b29;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #f5f5fc;
+}
+.container{
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+.frame-fx{
+    background: #fff;
+    width: 600px;
+    height: 400px;
+    box-shadow: 7px 5px 20px #cccce5f5;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.frame-fx .col0{
+    background: #0050e7;
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0, 26% 100%, 0% 100%);
+}
+.frame-fx .col1{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ /* Inputs Text Box */
+.inbox{
+    width: 80%;
+    height: 35px;
+    margin: 10px;
+    border: 2px solid #f5f5fc;
+    border-radius: 5px;
+}
+.inbox input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding: 15px;
+    font-size: 15px;
+    color: #081b29;
+    
+}
+.yves-col{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.yves-col a{
+    font-size: 13.5px;
+}
+.btn{
+    width: 100px;
+    height: 35px;
+    background: transparent;
+    border: none;
+    background: #0050e7;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 15.5px;
+    cursor: pointer;
+}
+
+/* Responsiveness for Login */
+@media screen and (max-width: 610px){
+    body{
+        align-items: flex-start;
+    }
+    .frame-fx{
+        position: relative;
+        grid-template-columns: 100%;
+    }
+    .frame-fx .col0{
+        display: none;
+    }
+    .frame-fx .col1::after{
+        position: absolute;
+        content: '';
+        width: 100px;
+        height: 100px;
+        background: #0050e7;
+        top: 0;
+        left: 0;
+        clip-path: polygon(0 0, 0 100%, 100% 0);
+    }
+}

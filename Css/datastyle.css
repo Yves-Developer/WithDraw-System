@@ -1,0 +1,357 @@
+/* DON'T TOUCH THIS LINES IF YOU CARE MY HARDWORKING
+====================================================
+Developer: Yves Mugisha
+Date: 16/11/2023
+Day: Thursday
+Mater Dei
+E-mail: info@integratedfolks.com
+=================================================== */
+body{
+    color: rgb(0, 2, 4);
+}
+input[type=submit]{
+    border: none;
+}
+.second{
+    width: 65%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-weight: 400;
+    transition: .8s ease;
+    border-radius: 5px;
+    height: 40px;
+    border: 2px solid #078ff3;
+    color: #078ff3;
+}
+.second:hover{
+    background: #078ff3;
+    color: #fff;
+}
+.main{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 400px calc(100% - 400px);
+}
+.panel{
+    height: 100%;
+    display: grid;
+    grid-template-rows: 90% 10%;
+    box-shadow: 2px 0 10px #cfcfcf;
+}
+.panel .history{
+    margin-top: 60px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.history .image{
+    width: 100px;
+    height: 100px;
+}
+.history ul{
+    list-style: none;
+    font-weight: 800;
+    color: #081b29;
+}
+.history ul li{
+    border-left: 4px solid #078ff3;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+}
+.logout{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+
+}
+.logout a{
+    transition: .6s ease;
+}
+.logout a:hover{
+    color: #078ff3;
+}
+.image img{
+    width: 100%;
+    height: 100%;
+}
+.frame-yves{
+    height: 100%;
+}
+.tooltip{
+    position: relative;
+    margin-top: 100px;
+    margin-left: 30px;
+    width: 90%;
+    height: 500px;
+    padding: 20px;
+    box-shadow: 6px 6px 34px #cfcfcf;
+    border-radius: 5px;
+}
+caption{
+    color: #081b29;
+    font-size: 20px;
+    font-weight: 600;
+}
+.yvestable{
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+    text-align: left;
+}
+.yvestable tr:nth-child(even){
+    background: #078ff3;
+    color: #fff;
+    
+}
+.yvestable tr:nth-child(odd){
+    background: #f5f5fc;
+    color: #081b29;
+    
+}
+.yvestable tr th,td{
+    padding: 5px;
+}
+.tooltip .tool{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    text-align: center;
+    padding: 8px;
+}
+.tool input{
+    width: 300px;
+    border: 1px solid#cfcfcf;
+    margin-left: 10px;
+    border-radius: 4px;
+    color: #081b29;
+    padding: 10px;
+    font-size: 18px;
+    outline: none;
+}
+.tool select{
+    width: 200px;
+    border: 1px solid #cfcfcf;
+    outline: none;
+    border-radius: 4px;
+    font-size: 16px;
+}
+select option{
+    height: 35px;
+    color: #081b29;
+}
+.tooltip .footer{
+    display: flex;
+    margin-top: 20px;
+
+}
+.footer div{
+    margin-left: 10px;
+}
+.footer div:hover{
+    background: #078ff3;
+    color: #fff;
+}
+.left,.right,.number{
+    display: flex;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #cfcfcf;
+}
+
+
+/* Modal box  */
+.modalbox{
+    width: 500px;
+    height: 300px;
+    background: #fff;
+    position: absolute;
+    top: 100px;
+    left: 500px;
+    z-index: 1;
+    box-shadow: 2px 0 15px #cfcfcf;
+    border-radius: 5px;
+    display: none;
+    grid-template-columns: 30% 70%;
+}
+.modalbox.movedown{
+    animation: slide-down .5s linear;
+}
+.modalbox.moveup{
+    animation: slide-up .5s linear;
+}
+.modalbox.active{
+    display: grid;
+}
+.dx{
+    height: 100%;
+    background: #078ff3;
+    clip-path: polygon(0 0, 61% 0, 11% 100%, 0% 100%);
+}
+.form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: #0D1224; */
+}
+.close{
+    position: absolute;
+    top: 5px;
+    right: 8px;
+}
+.close i{
+    font-size: 18px;
+    color: #081b29;
+    cursor: pointer;
+}
+.close i:hover{
+    color: #078ff3;
+}
+.form .inputbx{
+    width: 80%;
+    height: 35px;
+    margin: 8px;
+    border: 2px solid #cfcfcf;
+    border-radius: 5px;
+
+}
+.inputbx input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 10px;
+    color: #081b29;
+    font-size: 16px;
+    outline: none;
+
+}
+@keyframes slide-down {
+    0%{
+        top:-500px;
+    }
+    100%{
+        top: 100px;
+    }
+}
+@keyframes slide-up {
+    0%{
+        top: 100px;
+
+    }
+    100%{
+        top: -500px;
+    }
+}
+
+
+/* Responsivenes for admin panle/ controll panel */
+@media screen and (max-width: 1120px){
+    .main{
+        grid-template-columns: 100%;
+    }
+    .panel{
+        display: none;
+    }
+}
+@media screen and (max-width:750px){
+    .holder{
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    .frame-bx{
+        grid-template-columns: 100%!important;
+    }
+    .frame-bx .col0{
+        display: none;
+    }
+
+    .frame-bx .col1{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media screen and (max-width:420px){
+    .tool input{
+        width: 100px;
+    }
+}
+
+/* Registeration  */
+.frame-bx{
+    margin: 100px;
+    width: 700px;
+    height: 400px;
+    background: #fff;
+    display: grid;
+    border-radius: 8px;
+    grid-template-columns: 30% 70%;
+    box-shadow: 4px 3px 310px #cfcfcf;
+}
+
+.frame-bx .col0{
+    height: 100%;
+    background: #078ff3;
+    clip-path: polygon(0 0, 100% 0, 23% 100%, 0% 100%);
+}
+.frame-bx .col1{
+    height: 100%;
+}
+.col1 .data{
+    width: 100%;
+    height: 100%;
+}
+.data .back{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.data h2{
+    color: #081b29;
+    margin: 5px 20px;
+}
+.data .input0{
+    width: 80%;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 20px;;
+    border-radius: 5px;
+    border: 2px solid #cfcfcf;
+}
+.input0 input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    padding: 10px;
+    color: #081b29;
+}
+.btn1{
+    width: 100px;
+    height: 35px;
+    background: #078ff3;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.btn1:hover{
+    box-shadow: 2px 0 8px #078ff3;
+}
