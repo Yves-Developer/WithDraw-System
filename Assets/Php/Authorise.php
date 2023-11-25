@@ -1,5 +1,5 @@
 <?php
-    require_once('./includes.php');
+    require_once('./database.php');
     session_start();
     $user_name = trim($_POST['username']);
     $password = $_POST['password'];

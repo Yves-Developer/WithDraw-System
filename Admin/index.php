@@ -13,9 +13,17 @@ E-mail: info@integratedfolks.com
 
 <!-- Session Testing -->
 <?php
+include_once "../Assets/Php/database.php";
 session_start();
 if(!isset($_SESSION['username'])) {
     header('location: ../Authorization/login.php');
+}
+$code;
+if (!isset($_GET['data'])) {
+    $code = 1;
+}
+else{
+ $code = $_GET['data'];   
 }
 
 ?>
@@ -59,7 +67,7 @@ if(!isset($_SESSION['username'])) {
                     <input type="text" placeholder="Enter Password" name="passwordcp">
                 </div>
                 <input type="submit" value="bitsa" id="action1" class="btn0" onclick="PushData1()">
-                
+
             </form>
         </div>
     <!-- Css Modal Box 2-->
@@ -86,11 +94,19 @@ if(!isset($_SESSION['username'])) {
                 <div class="image"><img src="../Assets/Images/Male_Avatar.svg" alt=""></div>
                 <h1>Basic Info</h1>
                 <ul>
-                    <li>Balance: <span>{data}</span></li>
-                    <li>last Deposit date: <span>{data}</span></li>
-                    <li>last widthdraw date: <span>{data}</span></li>
+                    <!-- Students Info PHP -->
+                    <?php
+                    $sql0 = "SELECT * FROM students WHERE id = {$code}";
+                    $query0 = mysqli_query($conn, $sql0);
+                    if (mysqli_num_rows($query0) > 0) {
+                        $row0 = mysqli_fetch_assoc($query0);
+                    }
+                    ?>
+                    <li>Balance: <span style="padding-left:5px;"> <?php echo $row0['balance'];?></span></li>
+                    <li>Class: <span style="padding-left:5px;"> <?php echo $row0['class'];?></span></li>
+                    <li>Names: <span style="padding-left:5px;"> <?php echo $row0['names'];?></span></li>
                 </ul>
-                <a href="#" class="second"><i class="fa-solid fa-address-card"></i> Add Students</a>
+                <a href="./Register.php" class="second"><i class="fa-solid fa-address-card"></i> Add Students</a>
             </div>
 
             <div class="logout"><a href="../Assets/Php/logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></div>
@@ -118,38 +134,46 @@ if(!isset($_SESSION['username'])) {
             <th>Class</th>
             <th>Action</th>
         </tr>
+<!-- ###############DATA RETRIEVING FROM DATABASE################# -->
+<?php
+$page;
+if(isset($_GET['page'])){
+    $page = $_GET['page'];
+}
+else{
+    $page = 1;
+}
+
+$num = 8*($page - 1);
+$numpp = 8;
+$sql = "SELECT * FROM students ORDER BY id LIMIT ".$num.",".$numpp;
+$query = mysqli_query($conn,$sql);
+$total = mysqli_num_rows($query);
+$numPage = ceil($total/$numpp);
+if ($total > 0) {
+    while ($row = mysqli_fetch_assoc($query)) {
+        echo "
         <tr>
-            <td>Data12099</td>
-            <td>Data12099</td>
-            <td>Data12099</td>
-            <td>Data12099</td>
-        </tr>
-        <tr>
-            <td>Data12099</td>
-            <td>Data12099</td>
-            <td>Data12099</td>
-            <td>Data12099</td>
-        </tr>
-        <tr>
-            <td>Data12099</td>
-            <td>Data12099</td>
-            <td>Data12099</td>
-            <td>Data12099</td>
-        </tr>
-        <tr>
-            <td>Data12099</td>
-            <td>Data12099</td>
-            <td>Data12099</td>
-            <td>Data12099</td>
-        </tr>
+        <td>".$row['id']."</td>
+        <td>".$row['names']."</td>
+        <td>".$row['class']."</td>
+        <td><a href='./?data=".$row['id']."' class='btn00'>Info</a></td>
+        </tr>";
+    }
+}
+
+?>
+
     </table>
 </div>
                 <div class="footer">
-                    <div class="left"><<</div>
-                    <div class="number">1</div>
-                    <div class="number">2</div>
-                    <div class="number">3</div>
-                    <div class="right">>></div>
+                    <?php $back = $page; ?>
+                    <a class="left" href="./?page=<?php $back--;if($back > 0){echo $back;}else{$back=$numPage;echo $back;} ?>"><<</a>
+                    <a class="number" href="./?page=1">1</a>
+                    <a class="number" href="./?page=2">2</a>
+                    <a class="number" href="./?page=3">3</a>
+                    <a class="number" href="./?page=4">4</a>
+                    <a class="right" href="./?page=<?php echo ++$page; ?>">>></a>
                 </div>
             </div>
         </div>

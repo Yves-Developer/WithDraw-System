@@ -155,10 +155,10 @@ select option{
     margin-top: 20px;
 
 }
-.footer div{
+.footer a{
     margin-left: 10px;
 }
-.footer div:hover{
+.footer a:hover{
     background: #078ff3;
     color: #fff;
 }

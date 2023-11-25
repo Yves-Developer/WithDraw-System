@@ -1,6 +1,6 @@
 <?php
 
-    require_once('./includes.php');
+   require_once('./database.php');
 
     $password = $_POST['password'];
     $repeat = trim($_POST['repeat']);
