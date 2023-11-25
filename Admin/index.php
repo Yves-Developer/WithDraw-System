@@ -48,17 +48,17 @@ if(!isset($_SESSION['username'])) {
     <div class="modalbox" id="modal">
         <div class="close" onclick="hide()"><i class="fas fa-times"></i></div>
         <div class="dx"></div>
-            <form action="#" class="form">
+            <form action="#" class="form" method="POST">
                 <div class="inputbx">
-                    <input type="text" placeholder="Enter Username">
+                    <input type="text" placeholder="Amount" name="amount">
                 </div>
                 <div class="inputbx">
-                    <input type="text" placeholder="Enter Username">
+                    <input type="text" placeholder="Student Code" name="code">
                 </div>
                 <div class="inputbx">
-                    <input type="text" placeholder="Enter Username">
+                    <input type="text" placeholder="Password" name="password">
                 </div>
-                <input type="submit" value="Deposit" class="btn0">
+                <input type="submit" value="Deposit" class="btn0" onclick="PushData()">
             </form>
         </div>
     <!-- Dashboard Coding -->
@@ -166,7 +166,23 @@ function hide() {
     
 }
 //Prevent Default
-
+var form00 = document.getElementsByClassName('form')[0];
+form00.onsubmit = (Event)=>{
+    Event.preventDefault();
+}
+//Push data
+function PushData() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST','../Assets/Php/withdraw.php',true);
+    xhr.onload = ()=>{
+        if(xhr.status == 200 && xhr.readyState == 4){
+            var data = xhr.responseText;
+            alert(data);
+        }
+    }
+    var formData0 = new FormData(form00);
+    xhr.send(formData0);
+}
 </script>
 </body>
 </html>
