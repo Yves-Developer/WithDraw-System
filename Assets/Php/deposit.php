@@ -1,10 +1,9 @@
 <?php
     require_once('./includes.php');
     session_start();
-    $password = $_POST['password'];
-    $amount = $_POST['amount'];
-    $code = $_POST['code'];
-
+    $password = $_POST['passwordcp'];
+    $amount = $_POST['amountcp'];
+    $code = $_POST['codecp'];
     if(empty($password) || empty($amount) || empty($code)) {
        echo "Uzuza neza ibisabwa";
        exit();
@@ -20,20 +19,20 @@
         $names = $row['names'];
         $agent = $_SESSION['username'];
 
-        if(password_verify($password, $row['password']) && $amount <= $row['balance']) {
-            $new_balance = ($row['balance']) - $amount;
+        if(password_verify($password, $row['password'])) {
+            $new_balance = ($row['balance']) + $amount;
             $sql = "UPDATE students SET balance = {$new_balance} WHERE id=$code ";
             $query = mysqli_query($conn, $sql);
 
             // Insert into transaction
-            $sql = "INSERT INTO transactions(student, activity, student_code, agent, amount, class) VALUES('$names', 'kubikuza', $code, '$agent', $amount, '$class') ";
+            $sql = "INSERT INTO transactions(student, activity, student_code, agent, amount, class) VALUES('$names', 'kubitsa', $code, '$agent', $amount, '$class') ";
             $query = mysqli_query($conn, $sql);
 
-            echo $names . " Abikuje " . $amount;
+            echo $names . " Abikije " . $amount;
 
         }
         else{
-            echo "Amafaranga ufite mo Ntahagije!";
+            echo "umubare wibanga nabwo wahuye!";
         }
     }
 

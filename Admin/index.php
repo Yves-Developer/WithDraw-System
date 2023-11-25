@@ -38,27 +38,45 @@ if(!isset($_SESSION['username'])) {
         <div class="logo" id="logo">Mater Dei.</div>
         <nav id="nav">
             <a href="./index.html">Home</a>
-            <a href="#" onclick="Popup()">Deposit</a>
-            <a href="../index.html">Withdraw</a>
+            <a href="#" onclick="Popup1()">Deposit</a>
+            <a href="#" onclick="Popup()">Withdraw</a>
         </nav>
         <div class="menu" onclick="loadData()"><i class="fa-solid fa-bars"></i></div>
     </div>
     <!-- Navigation Bar Section end -->
-    <!-- Css Modal Box -->
+    <!-- 1 ghj------>
+    <div class="modalbox" id="modal1">
+        <div class="close" onclick="hide()"><i class="fas fa-times"></i></div>
+        <div class="dx"></div>
+            <form action="#" class="form" method="POST">
+                <div class="inputbx">
+                    <input type="text" placeholder="Enter Amount" name="amountcp">
+                </div>
+                <div class="inputbx">
+                    <input type="text" placeholder="Enter Student Code" name="codecp">
+                </div>
+                <div class="inputbx">
+                    <input type="text" placeholder="Enter Password" name="passwordcp">
+                </div>
+                <input type="submit" value="bitsa" id="action1" class="btn0" onclick="PushData1()">
+                
+            </form>
+        </div>
+    <!-- Css Modal Box 2-->
     <div class="modalbox" id="modal">
         <div class="close" onclick="hide()"><i class="fas fa-times"></i></div>
         <div class="dx"></div>
             <form action="#" class="form" method="POST">
                 <div class="inputbx">
-                    <input type="text" placeholder="Amount" name="amount">
+                    <input type="text" placeholder="Enter Amount" name="amount">
                 </div>
                 <div class="inputbx">
-                    <input type="text" placeholder="Student Code" name="code">
+                    <input type="text" placeholder="Enter Student Code" name="code">
                 </div>
                 <div class="inputbx">
-                    <input type="text" placeholder="Password" name="password">
+                    <input type="text" placeholder="Enter Password" name="password">
                 </div>
-                <input type="submit" value="Deposit" class="btn0" onclick="PushData()">
+                <input type="submit" value="Bikuza" class="btn0" onclick="PushData()">
             </form>
         </div>
     <!-- Dashboard Coding -->
@@ -144,12 +162,21 @@ var logo = document.getElementById('logo');
 var navbar = document.getElementById('navbar');
 var nav = document.getElementById('nav');
 var modal = document.getElementById('modal');
+var modal1 = document.getElementById('modal1');
 function loadData() {
     logo.classList.add('active');
     navbar.classList.add('active');
     navbar.classList.add('fades');
     nav.classList.add('active');
 
+}
+//Data manipulation
+function Popup1() {
+    modal1.classList.add('active');
+    modal1.classList.add('movedown');
+    if(modal1.classList.contains('moveup')){
+        modal1.classList.remove('moveup');
+    }
 }
 function Popup() {
     modal.classList.add('active');
@@ -162,27 +189,59 @@ function hide() {
     modal.classList.add('moveup');
     window.setTimeout(function(){
     modal.classList.remove('active');    
-    },490);
-    
+    },470);
+    modal1.classList.add('moveup');
+    window.setTimeout(function(){
+    modal1.classList.remove('active');    
+    },470);  
 }
 //Prevent Default
-var form00 = document.getElementsByClassName('form')[0];
+var form00 = modal.getElementsByClassName('form')[0];
 form00.onsubmit = (Event)=>{
     Event.preventDefault();
 }
 //Push data
-function PushData() {
+function PushData(Action) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST','../Assets/Php/withdraw.php',true);
     xhr.onload = ()=>{
         if(xhr.status == 200 && xhr.readyState == 4){
             var data = xhr.responseText;
             alert(data);
+            //Auto Leave balnk Space
+            var inputsbx = form00.getElementsByClassName('inputbx');
+            for (let i = 0; i < inputsbx.length; i++) {
+                var inText1 = inputsbx[i].getElementsByTagName('input')[0];
+                inText1.value = "";
+            }
         }
     }
     var formData0 = new FormData(form00);
     xhr.send(formData0);
-}
+    }
+    //Push data1
+    var form1 = modal1.getElementsByClassName('form')[0];
+    form1.onsubmit = (Event)=>{
+    Event.preventDefault();
+    }
+    function PushData1(Action) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST','../Assets/Php/deposit.php',true);
+    xhr.onload = ()=>{
+        if(xhr.status == 200 && xhr.readyState == 4){
+            var data = xhr.responseText;
+            alert(data);
+            //Leave Blank Space
+            var inputsbx = form1.getElementsByClassName('inputbx');
+            for (let i = 0; i < inputsbx.length; i++) {
+                var inText = inputsbx[i].getElementsByTagName('input')[0];
+                inText.value = "";
+            }
+        }
+    }
+    var formData1 = new FormData(form1);
+    xhr.send(formData1);
+    }
 </script>
 </body>
 </html>
