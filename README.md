@@ -8,7 +8,7 @@ This project implement basic deposit and Withdraw logic with stunning UI.
 4. PHP
 5. PHP - `DOMPDF`
 
-## 80% Of My Projects Are `Private` On Github.
+## Explore on Portfolio.
 
 You can Browse and Explore All of my projects on my Portfolio Website.
 
